@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import { Link } from "react-router-dom";
 class Login extends Component {
 
   // Set initial state
@@ -7,7 +7,6 @@ class Login extends Component {
     username: "",
     password: ""
   }
-
   // Update state whenever an input field is edited
   handleFieldChange = (evt) => {
     const stateToChange = {}

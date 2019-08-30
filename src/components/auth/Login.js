@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom";
+import Authentication from '../../modules/AuthenticationManager'
+
 class Login extends Component {
 
   // Set initial state
@@ -14,17 +15,28 @@ class Login extends Component {
     this.setState(stateToChange)
   }
 
+
   handleLogin = (e) => {
     e.preventDefault()
+    console.log(Authentication)
+    Authentication.checkUser(this.state.username, this.state.password).then(userArray => {
+      if (userArray.length > 0) {
+        sessionStorage.setItem(
+            "activeUser",
+            JSON.stringify(
+                userArray[0].id
+            )
+        )
+        this.props.history.push("/home");
 
-    sessionStorage.setItem(
-        "credentials",
-        JSON.stringify({
-            username: this.state.username,
-            password: this.state.password
-        })
-    )
-    this.props.history.push("/home");
+      }else {
+      alert("Invalid username or password")
+
+      }
+
+
+    })
+
 
   }
 
@@ -35,7 +47,7 @@ class Login extends Component {
             <h3>Please Login</h3>
             <div className="nutshellForms">
                 <input onChange={this.handleFieldChange} type="email"
-                    id="email"
+                    id="username"
                     placeholder="Email address"
                     required="" autoFocus="" />
                 <label htmlFor="inputEmail">Email address</label>

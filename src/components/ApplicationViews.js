@@ -8,13 +8,18 @@ export default class ApplicationViews extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
+
   render() {
     return (
       <React.Fragment>
-        <Route  exact path="/login" Component={Login} />
+        <Route path="/login" component={Login} />
         <Route
           exact path="/" render={props => {
-            return <Home {...props}/>
+            if (this.isAuthenticated()) {
+            return <Home />
+            }else {
+              return <Redirect to="/login" />
+            }
           }}
         />
 
@@ -22,7 +27,7 @@ export default class ApplicationViews extends Component {
           exact path="/news" render={props => {
             if (this.isAuthenticated()) {
               return <NewsCard />
-            } else { return <Redirect to="/login" />
+
 
             // Remove null and return the component which will show news articles
           }

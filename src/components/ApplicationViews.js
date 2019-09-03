@@ -58,7 +58,8 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
-            return <TaskList />;
+            
+            return <TaskList {...props}/>;
             // Remove null and return the component which will show the user's tasks
           }}
         />

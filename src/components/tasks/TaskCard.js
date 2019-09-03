@@ -7,9 +7,9 @@ class TaskCard extends Component {
     <div className="card">
       <div className="card-content">
         <h3>
-          Task: <b>{this.props.task.name}</b>
+          Task: <b>{this.props.task.taskName}</b>
         </h3>
-        <p>Date: {this.props.task.date}</p>
+        <p>Date: {this.props.task.taskDate}</p>
         {/* <input type="checkbox" {...props} /> */}
         <button type="button" onClick={() => {}}>
           Edit

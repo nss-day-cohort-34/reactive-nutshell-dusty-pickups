@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./home/Home";
 import NewsCard from "./news/News";
+import MessageList from "./messages/MessageList"
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -48,7 +49,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/messages"
           render={props => {
-            return null;
+            return <MessageList />;
             // Remove null and return the component which will show the messages
           }}
         />

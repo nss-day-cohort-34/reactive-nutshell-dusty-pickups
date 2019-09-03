@@ -10,41 +10,50 @@ import {
   Input,
   Form,
 } from "reactstrap";
+import TaskManager from "../../modules/TaskManager";
 
-class TaskAddModal extends React.Component {
+class TaskEditModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       unmountOnClose: true,
+      // put properties here
       taskName: "",
       taskDate: "",
       loadingStatus: false
-
-      // put properties here
     };
 
     this.toggle = this.toggle.bind(this);
     this.changeUnmountOnClose = this.changeUnmountOnClose.bind(this);
   }
+
   handleFieldChange = evt => {
+    // whatever we put in the inputs changes the state
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
-  constructNewTask = evt => {
+  componentDidMount() {
+    TaskManager.getTask(this.props.task.id).then(task => {
+      this.setState({ taskName: task.taskName, taskDate: task.taskDate });
+    });
+  }
+
+  updateExistingTask = evt => {
     evt.preventDefault();
-    if (this.state.taskName === "" || this.state.taskDate === "") {
-      window.alert("Please fill out the form right, idiot head.");
-    } else {
-      this.setState({ loadingStatus: true });
-      const task = {
-        taskName: this.state.taskName,
-        taskDate: this.state.taskDate
-      };
-      this.props.addNewTask(task).then(() => this.toggle());
-    }
+    this.setState({ loadingStatus: true });
+    const editedTask = {
+      // creates edited task object with the values that we type in inputs
+      taskName: this.state.taskName,
+      taskDate: this.state.taskDate
+    };
+
+    this.props
+      // invokes edit task function from task list, passes edited object and the id, and then closes modal
+      .editTask(editedTask, this.props.task.id)
+      .then(() => this.toggle());
   };
 
   toggle() {
@@ -64,7 +73,7 @@ class TaskAddModal extends React.Component {
         <Form inline onSubmit={e => e.preventDefault()}>
           {" "}
           <Button color="primary" onClick={this.toggle}>
-            Add New Task
+            Edit Task
           </Button>
         </Form>
         <Modal
@@ -80,17 +89,18 @@ class TaskAddModal extends React.Component {
               id="taskName"
               type="text"
               onChange={this.handleFieldChange}
-              placeholder="Add New Task"
+              value={this.state.taskName}
             />
             <Input
               id="taskDate"
               type="date"
               onChange={this.handleFieldChange}
+              value={this.state.taskDate}
             />
           </ModalBody>
           <ModalFooter>
             {/* put buttons */}
-            <Button color="primary" onClick={this.constructNewTask}>
+            <Button color="primary" onClick={this.updateExistingTask}>
               Submit
             </Button>{" "}
             <Button color="secondary" onClick={this.toggle}>
@@ -103,4 +113,4 @@ class TaskAddModal extends React.Component {
   }
 }
 
-export default TaskAddModal;
+export default TaskEditModal;

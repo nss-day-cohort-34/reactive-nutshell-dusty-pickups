@@ -3,13 +3,14 @@ import { Link } from "react-router-dom"; // delete me if not used
 
 class TaskCard extends Component {
   render() {
+    return (
     <div className="card">
       <div className="card-content">
         <h3>
           Task: <b>{this.props.task.name}</b>
         </h3>
         <p>Date: {this.props.task.date}</p>
-        <input type="checkbox" {...props} />
+        {/* <input type="checkbox" {...props} /> */}
         <button type="button" onClick={() => {}}>
           Edit
         </button>
@@ -20,8 +21,9 @@ class TaskCard extends Component {
           Delete Task
         </button>
       </div>
-    </div>;
-  }
+    </div>
+  )
+}
 }
 
 export default TaskCard;

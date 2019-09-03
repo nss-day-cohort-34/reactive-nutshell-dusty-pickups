@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TaskCard from "./TaskCard";
 import TaskManager from "../../modules/TaskManager";
+import TaskAddModal from "./TaskAddModal";
 
 class TaskList extends Component {
   //define what this component needs to render
@@ -18,25 +19,23 @@ class TaskList extends Component {
     });
   }
 
-  deleteTask = id => {
-    TaskManager.deleteTasks(id).then(() => {
-      TaskManager.getAllTasks().then(tasks => {
-        this.setState({
-          tasks: tasks
-        });
-      });
-    });
-  };
+  // // deleteTask = id => {
+  // //   TaskManager.deleteTasks(id).then(() => {
+  // //     TaskManager.getAllTasks().then(tasks => {
+  // //       this.setState({
+  // //         tasks: tasks
+  // //       });
+  // //     });
+  // //   });
+  // // };
 
-  renderTasks() {
+  render() {
     console.log("TASK LIST: render");
 
     return (
       <React.Fragment>
         <section className="button__container">
-          <button type="button" className="btn" onclick={() => {}}>
-            Add New Task
-          </button>
+          <TaskAddModal addTask={this.addTask}/>
         </section>
         <div className="cards__container">
           {this.state.tasks.map(task => (
@@ -52,3 +51,5 @@ class TaskList extends Component {
     );
   }
 }
+
+export default TaskList

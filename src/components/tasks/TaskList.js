@@ -19,15 +19,15 @@ class TaskList extends Component {
     });
   }
 
-  // // deleteTask = id => {
-  // //   TaskManager.deleteTasks(id).then(() => {
-  // //     TaskManager.getAllTasks().then(tasks => {
-  // //       this.setState({
-  // //         tasks: tasks
-  // //       });
-  // //     });
-  // //   });
-  // // };
+  // deleteTask = id => {
+  //   TaskManager.deleteTasks(id).then(() => {
+  //     TaskManager.getAllTasks().then(tasks => {
+  //       this.setState({
+  //         tasks: tasks
+  //       });
+  //     });
+  //   });
+  // };
 
   render() {
     console.log("TASK LIST: render");
@@ -35,7 +35,7 @@ class TaskList extends Component {
     return (
       <React.Fragment>
         <section className="button__container">
-          <TaskAddModal addTask={this.addTask}/>
+          <TaskAddModal addTask={this.addTask} />
         </section>
         <div className="cards__container">
           {this.state.tasks.map(task => (
@@ -52,4 +52,4 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList
+export default TaskList;

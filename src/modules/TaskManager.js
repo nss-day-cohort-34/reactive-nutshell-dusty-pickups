@@ -27,5 +27,11 @@ export default {
       },
       body: JSON.stringify(editedTaskObj)
     }).then(data => data.json());
-  }
+  },
+  deleteTask(id) {
+    return fetch(`${remoteURL}/tasks/${id}`, {
+      method: "DELETE"
+    })
+      .then(result => result.json())
+  },
 };

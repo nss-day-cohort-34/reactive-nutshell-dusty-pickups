@@ -39,15 +39,15 @@ class TaskList extends Component {
     });
   };
 
-  // // deleteTask = id => {
-  // //   TaskManager.deleteTasks(id).then(() => {
-  // //     TaskManager.getAllTasks().then(tasks => {
-  // //       this.setState({
-  // //         tasks: tasks
-  // //       });
-  // //     });
-  // //   });
-  // // };
+  deleteTask = id => {
+    TaskManager.deleteTask(id).then(() => {
+      TaskManager.getAllTasks().then(tasks => {
+        this.setState({
+          tasks: tasks
+        });
+      });
+    });
+  };
 
   render() {
     return (

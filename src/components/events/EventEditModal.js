@@ -13,7 +13,7 @@ import {
   Input,
   Form
 } from "reactstrap";
-import EventManager from "../../modules/EventManager";
+import EventManager from "../../modules/EventsManager";
 
 // defines EventEditModal Component. Most from ReactStrap, refactored for what is needed to edit events
 class EventEditModal extends React.Component {
@@ -137,7 +137,7 @@ class EventEditModal extends React.Component {
           </ModalBody>
           <ModalFooter>
             {/* put buttons */}
-            <Button color="primary" onClick={this.updateExistingTask}>
+            <Button color="primary" onClick={this.updateExistingEvent}>
               Submit
             </Button>{" "}
             <Button color="secondary" onClick={this.toggle}>

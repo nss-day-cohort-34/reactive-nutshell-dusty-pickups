@@ -27,6 +27,7 @@ class EventCard extends Component {
             {this.props.event.eventDate}
           </p>
           {/* with spread operator, whatever is passed into event card is now being passed to event edit modal including eventobj and edit function */}
+
           {/* <EventEditModal {...this.props} />{" "} */}
           <button
             type="button"

@@ -1,11 +1,12 @@
 .container-message-cards {
     max-width: 50em;
-    padding: 200px;
+    padding: 30px;
     margin: 2em auto;
     border: solid black;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     background: white;
+    overflow: scroll
 }
 
 .message-input {

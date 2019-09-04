@@ -8,9 +8,11 @@ import MessageList from "./messages/MessageList"
 import TaskList from "./tasks/TaskList"
 
 export default class ApplicationViews extends Component {
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  isAuthenticated = () => sessionStorage.getItem("activeUser") !== null;
+  activeUser = () => parseInt(sessionStorage.getItem("activeUser"))
 
   render() {
+    console.log(this.activeUser())
     return (
       <React.Fragment>
         <Route path="/login" component={Login} />
@@ -32,7 +34,7 @@ export default class ApplicationViews extends Component {
           path="/news"
           render={props => {
             if (this.isAuthenticated()) {
-              return <NewsCard />;
+              return <NewsCard activeUser={this.activeUser} />;
 
               // Remove null and return the component which will show news articles
             }
@@ -50,7 +52,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/messages"
           render={props => {
-            return <MessageList />;
+            return <MessageList activeUser={this.activeUser} />;
             // Remove null and return the component which will show the messages
           }}
         />
@@ -58,8 +60,8 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
-            
-            return <TaskList {...props}/>;
+
+            return <TaskList activeUser={this.activeUser} {...props} />;
             // Remove null and return the component which will show the user's tasks
           }}
         />

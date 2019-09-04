@@ -41,7 +41,8 @@ class TaskAddModal extends React.Component {
       this.setState({ loadingStatus: true });
       const task = {
         taskName: this.state.taskName,
-        taskDate: this.state.taskDate
+        taskDate: this.state.taskDate,
+        userId: this.props.activeUser()
       };
       this.props.addNewTask(task).then(() => this.toggle());
     }

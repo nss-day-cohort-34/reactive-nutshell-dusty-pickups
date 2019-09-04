@@ -13,7 +13,7 @@ class MessageCard extends Component {
         <div className="card-content">
           <h3> 
               {/* the props have a message */}
-            `${this.props.message.userId}`: <b>{this.props.message.message}</b>
+            {this.props.message.user.username}: <b>{this.props.message.message}</b>
             {/* username would be this.props.users */}
           </h3>
           {/* <MessageEditModal {...this.props} />

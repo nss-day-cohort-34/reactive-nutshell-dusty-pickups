@@ -43,20 +43,19 @@ class MessageList extends Component {
         MessagesManager.postNewMessage(message)
             .then(() => {
                 MessagesManager.getAllMessages()
-            })
-            .then(messages => {
-                this.setState({
-                    messages: messages
+                .then(messages => {
+                    this.setState({
+                        messages: messages
+                    })
                 })
+                // then re-render with getAllMessages
             })
-        // then re-render with getAllMessages
     };
 
     render() {
         return (
             <>
                 <div className="container-message-cards" >
-                    <h1>Chat with friends</h1>
                     {/* for each message in the messages array assign parameter message to the messageCard property "message" */}
                     {this.state.messages.map(message =>
                         <MessageCard
@@ -77,7 +76,7 @@ class MessageList extends Component {
                                     type="text"
                                     required
                                     onChange={this.handleFieldChange}
-                                    id="messageText"
+                                    id="message"
                                     placeholder="Enter message"
                                 />
                             </div>

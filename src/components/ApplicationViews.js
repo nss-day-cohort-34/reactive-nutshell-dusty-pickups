@@ -6,6 +6,7 @@ import Home from "./home/Home";
 import NewsCard from "./news/News";
 import MessageList from "./messages/MessageList";
 import TaskList from "./tasks/TaskList";
+import EventList from "./events/EventList";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("activeUser") !== null;
@@ -67,9 +68,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events"
           render={props => {
-            return null;
-
-            // Remove null and return the component which will show the user's tasks
+            return <EventList activeUser={this.activeUser} {...props} />;
           }}
         />
       </React.Fragment>

@@ -4,15 +4,18 @@ const remoteURL = "http://localhost:5002"; // stores url for JSON server in a va
   exports all API methods as an object.
   variable name is given to the object when it's imported to another page.
 */
+
 export default {
   getEvent(id) {
     // fetches a single event by the id of the event. then parses to JSON
     return fetch(`${remoteURL}/events/${id}`).then(result => result.json());
   },
 
-  getAllTEvent() {
+  getAllEvents(id) {
     // fetches all events for the loggedin user. then parses to JSON
-    return fetch(`${remoteURL}/events`).then(result => result.json());
+    return fetch(`${remoteURL}/events?userId=${id}`).then(result =>
+      result.json()
+    );
   },
 
   postNewEvent(newEvent) {

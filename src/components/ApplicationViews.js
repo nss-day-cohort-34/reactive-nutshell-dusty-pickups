@@ -4,8 +4,8 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./home/Home";
 import NewsCard from "./news/News";
-import MessageList from "./messages/MessageList"
-import TaskList from "./tasks/TaskList"
+import MessageList from "./messages/MessageList";
+import TaskList from "./tasks/TaskList";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -58,8 +58,14 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
-            
-            return <TaskList {...props}/>;
+            return <TaskList {...props} />;
+            // Remove null and return the component which will show the user's tasks
+          }}
+        />
+        <Route
+          path="/events"
+          render={props => {
+            return null;
             // Remove null and return the component which will show the user's tasks
           }}
         />

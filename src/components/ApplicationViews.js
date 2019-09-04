@@ -4,15 +4,16 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./home/Home";
 import NewsCard from "./news/News";
-import MessageList from "./messages/MessageList"
-import TaskList from "./tasks/TaskList"
+import MessageList from "./messages/MessageList";
+import TaskList from "./tasks/TaskList";
+import EventList from "./events/EventList";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("activeUser") !== null;
-  activeUser = () => parseInt(sessionStorage.getItem("activeUser"))
+  activeUser = () => parseInt(sessionStorage.getItem("activeUser"));
 
   render() {
-    console.log(this.activeUser())
+    console.log(this.activeUser());
     return (
       <React.Fragment>
         <Route path="/login" component={Login} />
@@ -60,9 +61,14 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
-
             return <TaskList activeUser={this.activeUser} {...props} />;
             // Remove null and return the component which will show the user's tasks
+          }}
+        />
+        <Route
+          path="/events"
+          render={props => {
+            return <EventList activeUser={this.activeUser} {...props} />;
           }}
         />
       </React.Fragment>

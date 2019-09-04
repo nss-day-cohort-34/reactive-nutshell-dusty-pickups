@@ -19,6 +19,7 @@ class TaskEditModal extends React.Component {
       modal: false,
       unmountOnClose: true,
       // put properties here
+      userId: "",
       taskName: "",
       taskDate: "",
       loadingStatus: false
@@ -37,7 +38,7 @@ class TaskEditModal extends React.Component {
 
   componentDidMount() {
     TaskManager.getTask(this.props.task.id).then(task => {
-      this.setState({ taskName: task.taskName, taskDate: task.taskDate });
+      this.setState({ taskName: task.taskName, taskDate: task.taskDate, userId: task.userId });
     });
   }
 
@@ -47,7 +48,8 @@ class TaskEditModal extends React.Component {
     const editedTask = {
       // creates edited task object with the values that we type in inputs
       taskName: this.state.taskName,
-      taskDate: this.state.taskDate
+      taskDate: this.state.taskDate,
+      userId:  this.state.userId
     };
 
     this.props

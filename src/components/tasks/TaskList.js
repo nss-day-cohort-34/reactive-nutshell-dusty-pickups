@@ -10,7 +10,7 @@ class TaskList extends Component {
   };
 
   componentDidMount() {
-    TaskManager.getAllTasks().then(tasks => {
+    TaskManager.getAllTasks(this.props.activeUser()).then(tasks => {
       this.setState({
         tasks: tasks
       });
@@ -21,7 +21,7 @@ class TaskList extends Component {
   // We need to update list after you add new task, we function called inside modal, this changes the state.
   addNewTask = obj => {
     return TaskManager.postNewTask(obj).then(() => {
-      TaskManager.getAllTasks().then(tasks => {
+      TaskManager.getAllTasks(this.props.activeUser()).then(tasks => {
         this.setState({
           tasks: tasks
         });
@@ -31,7 +31,7 @@ class TaskList extends Component {
 
   editTask = (obj, id) => {
     return TaskManager.editTask(obj, id).then(() => {
-      TaskManager.getAllTasks().then(tasks => {
+      TaskManager.getAllTasks(this.props.activeUser()).then(tasks => {
         this.setState({
           tasks: tasks
         });
@@ -41,7 +41,7 @@ class TaskList extends Component {
 
   deleteTask = id => {
     TaskManager.deleteTask(id).then(() => {
-      TaskManager.getAllTasks().then(tasks => {
+      TaskManager.getAllTasks(this.props.activeUser()).then(tasks => {
         this.setState({
           tasks: tasks
         });
@@ -53,7 +53,7 @@ class TaskList extends Component {
     return (
       <React.Fragment>
         <section className="button__container">
-          <TaskAddModal addNewTask={this.addNewTask} />
+          <TaskAddModal addNewTask={this.addNewTask} {...this.props} />
         </section>
         <div className="cards__container">
           {this.state.tasks.map(task => (

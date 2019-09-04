@@ -1,3 +1,6 @@
+// Author: Brantley Jones
+// Purpose: Contains the API methods used for events
+
 const remoteURL = "http://localhost:5002"; // stores url for JSON server in a variable to be used for each fetch call
 
 /*

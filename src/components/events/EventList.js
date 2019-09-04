@@ -1,7 +1,10 @@
+// Author: Brantley Jones
+// Purpose: Creates a list component that contains all Event Cards. 
+
 import React, { Component } from "react"; // imports react and component from react
 import EventCard from "./EventCard"; // imports EventCard Component from EventCard.js
 import EventManager from "../../modules/EventsManager"; // imports the API methods for Events
-// import EventAddModal from "./EventAddModal"; // imports the Add Event Modal built using ReactStrap
+import EventAddModal from "./EventAddModal"; // imports the Add Event Modal built using ReactStrap
 
 class EventList extends Component {
   // sets state (object) events to an empty array
@@ -66,7 +69,7 @@ class EventList extends Component {
         {/* section containing the button for adding a new event */}
         <section className="button__container">
           {/* injects the add event modal */}
-          {/* <EventAddModal addNewEvent={this.addNewEvent} {...this.props} /> */}
+          <EventAddModal addNewEvent={this.addNewEvent} {...this.props} />
         </section>
         {/* section containing all of the cards for Events */}
         <div className="cards__container">
@@ -77,7 +80,7 @@ class EventList extends Component {
               event={event} // displays the details of a single event */}
               editEvent={this.editEvent} // passes down the editEvent function that lives in EventList.js to EventCard.js */}
               deleteEvent={this.deleteEvent} // passes down the deleteEvent function in EventList.js to EventCard.js */}
-              {...this.props}  // passes props into the EventCard with a spread operator. takes props and "spreads" them into individual elements */}
+              {...this.props} // passes props into the EventCard with a spread operator. takes props and "spreads" them into individual elements */}
             />
           ))}
         </div>

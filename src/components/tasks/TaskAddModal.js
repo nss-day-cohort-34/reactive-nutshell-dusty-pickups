@@ -8,7 +8,7 @@ import {
   ModalBody,
   ModalFooter,
   Input,
-  Form,
+  Form
 } from "reactstrap";
 
 class TaskAddModal extends React.Component {

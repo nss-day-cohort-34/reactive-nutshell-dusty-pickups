@@ -1,5 +1,8 @@
+// Author: Brantley Jones
+// Purpose: Creates a "card" that contains all the info for an event.
+
 import React, { Component } from "react"; // imports React and Component from react
-// import EventEditModal from "./EventEditModal"; // imports the edit event Modal made with reactstrap from the EventEditModal.js file
+import EventEditModal from "./EventEditModal"; // imports the edit event Modal made with reactstrap from the EventEditModal.js file
 
 class EventCard extends Component {
   // names the component we're using EventCard
@@ -12,23 +15,19 @@ class EventCard extends Component {
         <div className="card-content">
           {/* div w/ class name card-content for styling the content of each card */}
           <h3>
-            Event:
             {/* event name is being passed down from props. allows us to render dynamically. */}
             <b>{this.props.event.eventName}</b>
           </h3>
           <p>
-            Location:
             {/* location also being passed down from props */}
             {this.props.event.eventLocation}
           </p>
           <p>
-            Date:
             {/* date being passed down from props.  */}
             {this.props.event.eventDate}
           </p>
           {/* with spread operator, whatever is passed into event card is now being passed to event edit modal including eventobj and edit function */}
-
-          {/* <EventEditModal {...this.props} />{" "} */}
+          <EventEditModal {...this.props} />{" "}
           <button
             type="button"
             onClick={() => this.props.deleteEvent(this.props.event.id)}

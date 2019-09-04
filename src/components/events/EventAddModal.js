@@ -1,3 +1,6 @@
+// Author: Brantley Jones
+// Purpose: Creates the modal using ReactStrap to add an event
+
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React from "react";
@@ -116,6 +119,7 @@ class EventAddModal extends React.Component {
               onChange={this.handleFieldChange} // calls the handle field event function that lives in EventAddModal.js
               placeholder="Add New Event"
             />
+            {/* See comments for the first input */}
             <Input
               id="eventDate"
               type="date"
@@ -125,13 +129,15 @@ class EventAddModal extends React.Component {
               id="eventLocation"
               type="text"
               onChange={this.handleFieldChange}
+              placeholder="Location"
             />
           </ModalBody>
           <ModalFooter>
             {/* put buttons */}
-            <Button color="primary" onClick={this.constructNewTask}>
+            <Button color="primary" onClick={this.constructNewEvent}>
               Submit
             </Button>{" "}
+            {/* what is this? {" "} */}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>

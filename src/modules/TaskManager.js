@@ -6,7 +6,9 @@ export default {
   },
 
   getAllTasks(id) {
-    return fetch(`${remoteURL}/tasks?userId=${id}`).then(result => result.json());
+    return fetch(`${remoteURL}/tasks?userId=${id}`).then(result =>
+      result.json()
+    );
   },
 
   postNewTask(newTask) {

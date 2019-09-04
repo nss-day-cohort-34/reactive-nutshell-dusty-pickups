@@ -20,8 +20,7 @@ export default {
     return fetch(`${remoteURL}/events`, {
       method: "POST", // POST method
       headers: {
-        // tells the server that we're sending json data
-        "Content-Type": "application/json"
+        "Content-Type": "application/json" // tells the server that we're sending json data
       },
       body: JSON.stringify(newEvent) // converts to a string
     }).then(data => data.json()); // then parses to JSON
@@ -32,8 +31,7 @@ export default {
     return fetch(`${remoteURL}/events/${editedEventId}`, {
       method: "PUT", // PUT method
       headers: {
-        // tells the server that we're sending json data
-        "Content-Type": "application/json"
+        "Content-Type": "application/json" // tells the server that we're sending json data
       },
       body: JSON.stringify(editedEventObj) // converts to a string
     }).then(data => data.json()); // then parses to JSON

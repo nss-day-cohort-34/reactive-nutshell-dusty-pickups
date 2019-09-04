@@ -6,7 +6,9 @@ export default {
   },
 
   getAllTasks(id) {
-    return fetch(`${remoteURL}/tasks?userId=${id}`).then(result => result.json());
+    return fetch(`${remoteURL}/tasks?userId=${id}`).then(result =>
+      result.json()
+    );
   },
 
   postNewTask(newTask) {
@@ -28,10 +30,10 @@ export default {
       body: JSON.stringify(editedTaskObj)
     }).then(data => data.json());
   },
+
   deleteTask(id) {
     return fetch(`${remoteURL}/tasks/${id}`, {
       method: "DELETE"
-    })
-      .then(result => result.json())
-  },
+    }).then(result => result.json());
+  }
 };

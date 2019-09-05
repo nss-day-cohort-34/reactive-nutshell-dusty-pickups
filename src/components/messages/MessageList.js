@@ -45,7 +45,8 @@ class MessageList extends Component {
                     .then(messages => {
                         this.setState({
                             messages: messages,
-                            message: ""
+                            message: "",
+                            loadingStatus: false
                         })
                     })
                 // then re-render with getAllMessages

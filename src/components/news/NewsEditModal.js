@@ -38,8 +38,8 @@ class NewsEditModal extends React.Component {
   };
 
   componentDidMount() {
-    NewsManager.getTask(this.props.news.id).then(news => {
-      this.setState({ newsHeader: news.newsHeader, newsSynopsis: news.newsSynopsis, newsDate: news.newsDate, userId: task.userId });
+    NewsManager.getNews(this.props.news.id).then(news => {
+      this.setState({ newsHeader: news.newsHeader, newsSynopsis: news.newsSynopsis, newsURL: news.newsURL, newsDate: news.newsDate, userId: news.userId });
     });
   }
 
@@ -48,9 +48,9 @@ class NewsEditModal extends React.Component {
     this.setState({ loadingStatus: true });
     const editedNews = {
       // creates edited task object with the values that we type in inputs
-      newsHeader: this.state.taskName,
-      newsSynopsis: this.state,
-      taskDate: this.state.taskDate,
+      newsHeader: this.state.newsHeader,
+      newsSynopsis: this.state.newsSynopsis,
+      newsDate: this.state.newsDate,
       userId:  this.state.userId
     };
 
@@ -96,10 +96,10 @@ class NewsEditModal extends React.Component {
               value={this.state.newsHeader}
             />
             <Input
-              id="taskDate"
+              id="newsDate"
               type="date"
               onChange={this.handleFieldChange}
-              value={this.state.taskDate}
+              value={this.state.newsDate}
             />
           </ModalBody>
           <ModalFooter>

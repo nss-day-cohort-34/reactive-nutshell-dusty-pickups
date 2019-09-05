@@ -43,24 +43,32 @@ class MessageList extends Component {
         MessagesManager.postNewMessage(message)
             .then(() => {
                 MessagesManager.getAllMessages()
-                .then(messages => {
-                    this.setState({
-                        messages: messages
+                    .then(messages => {
+                        this.setState({
+                            messages: messages,
+                            message: ""
+                        })
                     })
-                })
                 // then re-render with getAllMessages
             })
     };
 
     editMessage = (obj, id) => {
         return MessagesManager.editMessage(obj, id).then(() => {
-          MessagesManager.getAllMessages(this.props.activeUser()).then(messages => {
-            this.setState({
-              messages: messages
+            MessagesManager.getAllMessages(this.props.activeUser()).then(messages => {
+                this.setState({
+                    messages: messages,
+                    message: ""
+                });
             });
-          });
         });
-      };
+    };
+
+    // clearMessageInput = () => {
+    //     this.setState({
+    //         message: ""
+    //     })
+    // }
 
     render() {
         return (
@@ -89,6 +97,7 @@ class MessageList extends Component {
                                     onChange={this.handleFieldChange}
                                     id="message"
                                     placeholder="Enter message"
+                                    value={this.state.message}
                                 />
                             </div>
                             <div className="send-message-button">

@@ -9,13 +9,13 @@ export default {
     return fetch(`${remoteURL}/news?userId=${id}`).then(result => result.json());
   },
 
-  postNewNews(newTask) {
+  postNewNews(newNews) {
     return fetch(`${remoteURL}/news`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(postNewNews)
+      body: JSON.stringify(newNews)
     }).then(data => data.json());
   },
 

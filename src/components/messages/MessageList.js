@@ -35,7 +35,7 @@ class MessageList extends Component {
         evt.preventDefault();
         this.setState({ loadingStatus: true });
         const message = {
-            // get the user id of active user from session storage by key "active user" and parse from json string to javascript object 
+            // get the user id of active user from session storage by key "active user" and parse from json string to javascript object
             userId: JSON.parse(sessionStorage.getItem("activeUser")),
             message: this.state.message, //take the message thats in state and send it to json
         };
@@ -89,7 +89,7 @@ class MessageList extends Component {
                                     type="text"
                                     required
                                     onChange={this.handleFieldChange}
-                                    id="message"
+                                   id="message"
                                     placeholder="Enter message"
                                     value={this.state.message}
                                 />

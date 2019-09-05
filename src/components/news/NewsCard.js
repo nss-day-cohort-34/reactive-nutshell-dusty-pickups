@@ -10,6 +10,7 @@ class NewsCard extends Component {
                   News: <b>{this.props.news.newsHeader}</b>
                 </h3>
                 <p>Snynopsis:{this.props.news.newsSynopsis}</p>
+                <p>URL: {this.props.news.newsURL}</p>
                 <p>Date: {this.props.news.newsDate}</p>
                 <NewsEditModal {...this.props} />{" "}
                 <button
@@ -22,6 +23,7 @@ class NewsCard extends Component {
             </div>
           );
 
-          export default NewsCard;
+
     }
 }
+export default NewsCard;

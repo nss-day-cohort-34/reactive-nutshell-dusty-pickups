@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import NewsCard from "./NewsCard";
 import NewsManager from "../../modules/NewsManager";
-import AddNewsModal from "./AddNewsModal";
+import NewsAddModal from "./NewsAddModal";
 
 class NewsList extends Component {
     state = {
         news: []
-    }
+    };
     // ComonentDidMount is the intial call/ calls for data and updates state
     componentDidMount() {
-        NewsManager.getallNews(this.props.activeUser()).then(news => {
+        NewsManager.getAllNews(this.props.activeUser()).then(news => {
             this.setState({
                 news: news
             });
@@ -30,7 +30,7 @@ class NewsList extends Component {
 // editNews is called which is the PUT method
     editNews = (obj, id) => {
         return NewsManager.editNews(obj, id).then(() => {
-            NewsManager.getAllNews(ths.props.activeUser()).then(news => {
+            NewsManager.getAllNews(this.props.activeUser()).then(news => {
                 this.setState({
                     news:news
                 });
@@ -53,7 +53,7 @@ class NewsList extends Component {
         return (
           <React.Fragment>
             <section className="button__container">
-              <AddNewsModal addNewNews={this.addNewNews} {...this.props} />
+              <NewsAddModal addNewNews={this.addNewNews} {...this.props} />
             </section>
             <div className="cards__container">
               {this.state.news.map(news => (

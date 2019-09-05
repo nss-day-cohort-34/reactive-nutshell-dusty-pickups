@@ -1,3 +1,5 @@
+// Porpuse: Creates a content card that conatins feilds
+// Author: Michael Stiles
 import React, { Component } from "react";
 import NewsEditModal from "./NewsEditModal";
 

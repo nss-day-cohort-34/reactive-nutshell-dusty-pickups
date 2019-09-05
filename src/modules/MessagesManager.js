@@ -1,3 +1,4 @@
+// Author:Allie Purpose: holds fetch calls for messages
 const remoteURL = "http://localhost:5002";
 
 export default {
@@ -22,8 +23,8 @@ export default {
         }).then(data => data.json());
     },
 
-    editTask(editedMessageObj, editedMessageId) {
-        return fetch(`${remoteURL}/tasks/${editedMessageId}`, {
+    editMessage(editedMessageObj, editedMessageId) {
+        return fetch(`${remoteURL}/messages/${editedMessageId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

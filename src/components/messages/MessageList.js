@@ -52,6 +52,16 @@ class MessageList extends Component {
             })
     };
 
+    editMessage = (obj, id) => {
+        return MessagesManager.editMessage(obj, id).then(() => {
+          MessagesManager.getAllMessages(this.props.activeUser()).then(messages => {
+            this.setState({
+              messages: messages
+            });
+          });
+        });
+      };
+
     render() {
         return (
             <>
@@ -63,6 +73,7 @@ class MessageList extends Component {
                             key={message.id}
                             // 1st message is a property (assigned to a message obj) to be used as props.message on message card
                             message={message}
+                            editMessage={this.editMessage}
                             // pass down all the props from parent
                             {...this.props}
                         />

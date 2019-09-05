@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './MessageCard.css'
-// import MessageEditForm from "./MessageEditForm"; //may not need
+import MessageEditModal from "./MessageEditModal";
 
 
 class MessageCard extends Component {
@@ -20,12 +20,13 @@ class MessageCard extends Component {
                         {/* username would be this.props.users */}
                     </h3>
                     {this.props.message.userId === this.props.activeUser() ?
-                        <button
-                            type="button"
-                            onClick={() => this.props.editMessage(this.props.task.id)}
-                        >
-                            Edit Message
-                    </button>
+                        <MessageEditModal {...this.props} />
+                    // <button
+                    //         type="button"
+                    //         onClick={() => this.props.editMessage(this.props.task.id)}
+                    //     >
+                    //         Edit Message
+                    // </button>
                     : console.log(this.props.message)
                     }
                 </div>

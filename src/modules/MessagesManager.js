@@ -22,8 +22,8 @@ export default {
         }).then(data => data.json());
     },
 
-    editTask(editedMessageObj, editedMessageId) {
-        return fetch(`${remoteURL}/tasks/${editedMessageId}`, {
+    editMessage(editedMessageObj, editedMessageId) {
+        return fetch(`${remoteURL}/messages/${editedMessageId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

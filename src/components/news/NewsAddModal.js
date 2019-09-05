@@ -1,3 +1,5 @@
+// Porpose: Creates Modal that adds new news
+// Author: Michael Stiles
 import React from "react";
 import {
   Button,

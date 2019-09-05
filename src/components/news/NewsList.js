@@ -1,3 +1,6 @@
+// Prpouse: Creates a list that contains all news cards
+// Author: Michael Stiles
+
 import React, { Component } from "react";
 import NewsCard from "./NewsCard";
 import NewsManager from "../../modules/NewsManager";
